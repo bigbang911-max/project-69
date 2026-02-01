@@ -185,6 +185,14 @@ h1, h2, h3, h4 {
     font-weight: 300;
 }
 
+/* Hero Buttons Container */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 .btn-glow {
     padding: 15px 40px;
     font-size: 1.2rem;
@@ -322,6 +330,24 @@ footer { background: #020408; padding: 60px 0 20px; border-top: 1px solid rgba(2
 /* Responsive */
 @media (max-width: 768px) {
     .hero-title { font-size: 3rem; }
+    
+    /* ปรับปุ่ม Hero ให้เรียงลงมาในมือถือ */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .btn-glow,
+    .btn-outline {
+        margin-right: 0;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        display: block;
+    }
+    
     .content-grid, .tech-grid, .creators-wrapper { grid-template-columns: 1fr; }
     .timeline::after { left: 31px; }
     .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
@@ -442,6 +468,24 @@ footer { background: #020408; padding: 60px 0 20px; border-top: 1px solid rgba(2
 
 @media (max-width: 768px) {
     .row { flex-direction: column; }
+    
+    /* ปรับปุ่ม Hero ให้เรียงลงมาในมือถือ */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .btn-glow,
+    .btn-outline {
+        margin-right: 0;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        display: block;
+    }
+    
 }
 
 /* --- Interactive Cards Design --- */
