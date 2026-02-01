@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI NEXUS | ศูนย์กลางองค์ความรู้ปัญญาประดิษฐ์</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <linkhref="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600;700&family=Krub:wght@300;400;600&display=swap"rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-line"></div>
+        <div class="logo-fixed">
+            <img src="img/logotechnical2.png" class="logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">หน้าหลัก</a></li>
+            <li><a href="#definition" class="nav-link">นิยาม & ประเภท</a></li>
+            <li><a href="#history" class="nav-link">วิวัฒนาการ</a></li>
+            <li><a href="#technology" class="nav-link">เทคโนโลยี</a></li>
+            <li><a href="#genai" class="nav-link">Gen AI</a></li>
+            <li><a href="#gg" class="nav-link">กลไก</a></li>
+            <li><a href="#impact" class="nav-link">ผลกระทบ</a></li>
+            <li><a href="#future" class="nav-link">อนาคต</a></li>
+            <li><a href="#creators" class="nav-link">ผู้จัดทำ</a></li>
+            <li class="user-status-li">
+                <div id="navUserStatus" class="nav-btn-wrapper">
+                    <a href="testquiz.html" class="btn-primary">เข้าสู่ระบบสอบ <i class="fas fa-sign-in-alt"></i></a>
+                </div>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <div class="video-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="hero-title">ARTIFICIAL <br> <span class="outline-text">INTELLIGENCE</span></h1>
+            <p class="hero-subtitle">ปลดล็อกศักยภาพแห่งอนาคต สู่ยุคสมัยแห่งปัญญาประดิษฐ์</p>
+            <div class="hero-buttons">
+                <a href="#definition" class="btn-glow">เริ่มต้นเรียนรู้</a>
+                <a href="#" id="aboutBtn" class="btn-outline">เกี่ยวกับโครงการ</a>
+            </div>
+        </div>
+
+        <div class="scroll-down">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <section id="definition" class="section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-right">
+                <span class="sub-heading">Introduction</span>
+                <h2>ปัญญาประดิษฐ์คืออะไร?</h2>
+                <div class="line-break"></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block" data-aos="fade-up">
+                    <p><strong>Artificial Intelligence (AI)</strong> หมายถึง
+                        ศาสตร์แห่งวิศวกรรมและการสร้างคอมพิวเตอร์ให้มีความฉลาด สามารถคิด วิเคราะห์
+                        และตัดสินใจได้ใกล้เคียงหรือเหนือกว่ามนุษย์ ครอบคลุมตั้งแต่การเรียนรู้ (Learning) การให้เหตุผล
+                        (Reasoning) ไปจนถึงการแก้ไขตัวเอง (Self-correction)</p>
+                </div>
+                <div class="image-block" data-aos="zoom-in">
+                    <div class="placeholder-img glow-box">
+                        <video autoplay muted loop playsinline>
+                            <source src="img/eiei.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="center-text mt-5">3 ระดับของ AI</h3>
+            <div class="cards-wrapper">
+                <div class="info-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
+                    <h3>ANI (Narrow AI)</h3>
+                    <p>AI ที่เก่งเฉพาะด้าน เช่น Siri, AlphaGo, ระบบแนะนำสินค้าใน Netflix</p>
+                </div>
+                <div class="info-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
+                    <h3>AGI (General AI)</h3>
+                    <p>AI ที่มีความฉลาดเทียบเท่ามนุษย์ ทำได้ทุกอย่าง (ยังเป็นทฤษฎี)</p>
+                </div>
+                <div class="info-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="icon-wrapper"><i class="fas fa-project-diagram"></i></div>
+                    <h3>ASI (Super AI)</h3>
+                    <p>AI ที่ฉลาดล้ำเลิศเหนือมนุษย์ในทุกด้าน (Futuristic Concept)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-section">
+        <div class="stat-item">
+            <h2 class="counter" data-target="1956">0</h2>
+            <p>ปีที่บัญญัติคำว่า AI</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="85">0</h2>
+            <p>% ธุรกิจที่จะใช้ AI ในปี 2030</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="300">0</h2>
+            <p>พันล้านดอลลาร์ มูลค่าตลาด</p>
+        </div>
+    </div>
+
+    <section id="history" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center-text" data-aos="fade-down">
+                <span class="sub-heading">Timeline</span>
+                <h2>วิวัฒนาการที่ไม่หยุดยั้ง</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h2>1950: The Turing Test</h2>
+                        <p>Alan Turing เสนอแบบทดสอบเพื่อวัดความฉลาดของเครื่องจักร</p>
+                    </div>
+                </div>
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h2>1997: Deep Blue</h2>
+                        <p>IBM Deep Blue ชนะ Garry Kasparov แชมป์โลกหมากรุก</p>
+                    </div>
+                </div>
+                <div class="timeline-container left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h2>2011: Siri & Watson</h2>
+                        <p>ยุคแห่งผู้ช่วยอัจฉริยะและการประมวลผลภาษาธรรมชาติ (NLP)</p>
+                    </div>
+                </div>
+                <div class="timeline-container right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h2>2022-Present: Generative AI</h2>
+                        <p>การมาถึงของ ChatGPT, Midjourney เปลี่ยนโลกการสร้างสรรค์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tech-grid-interactive">
+
+        <div class="tech-card" onclick="toggleCard(this)">
+            <div class="card-visible">
+                <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                <h3>MACHINE LEARNING</h3>
+                <p>การสอนให้คอมพิวเตอร์เรียนรู้จากข้อมูลโดยไม่ต้องเขียนโปรแกรมสั่งทุกขั้นตอน</p>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
+            <div class="card-hidden">
+                <hr>
+                <p><strong>การทำงาน:</strong> ใช้สถิติและคณิตศาสตร์เพื่อหาความสัมพันธ์ในข้อมูล เช่น การทำนายราคาบ้าน
+                    หรือระบบแนะนำสินค้า (Recommendation System)</p>
+                <ul class="mini-list">
+                    <li>Supervised Learning (มีเฉลย)</li>
+                    <li>Unsupervised Learning (ไม่มีเฉลย)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tech-card" onclick="toggleCard(this)">
+            <div class="card-visible">
+                <div class="icon-box"><i class="fas fa-brain"></i></div>
+                <h3>DEEP LEARNING</h3>
+                <p>โครงข่ายประสาทเทียม (Neural Networks) ที่ซับซ้อน เลียนแบบสมองมนุษย์</p>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
+            <div class="card-hidden">
+                <hr>
+                <p><strong>จุดเด่น:</strong> เก่งเรื่องข้อมูลที่ไม่มีโครงสร้างชัดเจน เช่น รูปภาพ เสียง และวิดีโอ
+                    เป็นเบื้องหลังของเทคโนโลยี Face ID และ รถยนต์ไร้คนขับ</p>
+            </div>
+        </div>
+
+        <div class="tech-card" onclick="toggleCard(this)">
+            <div class="card-visible">
+                <div class="icon-box"><i class="fas fa-language"></i></div>
+                <h3>NLP</h3>
+                <p>การประมวลผลภาษาธรรมชาติ ให้ AI เข้าใจภาษามนุษย์</p>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
+            <div class="card-hidden">
+                <hr>
+                <p><strong>ตัวอย่าง:</strong> Google Translate, Siri, และ Chatbot ต่างๆ
+                    ที่สามารถโต้ตอบและจับใจความประโยคของมนุษย์ได้</p>
+            </div>
+        </div>
+
+        <div class="tech-card" onclick="toggleCard(this)">
+            <div class="card-visible">
+                <div class="icon-box"><i class="fas fa-eye"></i></div>
+                <h3>COMPUTER VISION</h3>
+                <p>ให้คอมพิวเตอร์ "มองเห็น" และวิเคราะห์ภาพ (เช่น Face ID)</p>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
+            <div class="card-hidden">
+                <hr>
+                <p><strong>การใช้งาน:</strong> ตรวจจับวัตถุในกล้องวงจรปิด, วิเคราะห์ฟิล์มเอกซเรย์ทางการแพทย์,
+                    และระบบตรวจจับใบหน้าใน Social Media</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="genai" class="section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-right">
+                <span class="sub-heading">The Revolution</span>
+                <h2>Generative AI: ยุคแห่งการสร้างสรรค์</h2>
+                <div class="line-break"></div>
+            </div>
+
+            <div class="content-grid">
+                <div class="text-block" data-aos="fade-up">
+                    <p><strong>Generative AI (GenAI)</strong> คือจุดเปลี่ยนครั้งสำคัญที่ทำให้ AI ไม่ใช่แค่
+                        "ผู้คิดวิเคราะห์" อีกต่อไป แต่กลายเป็น "ผู้สร้างสรรค์" ผลงานใหม่ๆ ได้ ทั้งข้อความ รูปภาพ เสียง
+                        และวิดีโอ</p>
+
+                    <ul class="fancy-list mt-5">
+                        <li><strong>Text Generation:</strong> เช่น ChatGPT ที่เขียนบทความ โค้ดโปรแกรม หรือแต่งกลอนได้
+                        </li>
+                        <li><strong>Image Synthesis:</strong> เช่น Midjourney หรือ Stable Diffusion
+                            ที่วาดภาพศิลปะได้ในไม่กี่วินาที</li>
+                        <li><strong>Video & Audio:</strong> การสร้างวิดีโอเสมือนจริงและเสียงสังเคราะห์ที่แยกไม่ออก</li>
+                    </ul>
+
+                    <a href="https://chat.openai.com/" target="_blank" class="btn-outline"
+                        style="margin-top: 20px; display:inline-block;">ทดลองใช้ ChatGPT <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="image-block" data-aos="zoom-in">
+                    <div class="placeholder-img glow-purple" style="border:none; background:transparent;">
+
+                        <video autoplay muted loop playsinline>
+                            <source src="img/code.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="gg" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>เจาะลึกกลไกการเรียนรู้ของเครื่อง</h2>
+                <p>ความแตกต่างระหว่างรูปแบบการสอน AI ในปัจจุบัน</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="tech-detail-card" data-aos="fade-right">
+                    <div class="badge">Supervised</div>
+                    <h3>การเรียนรู้แบบมีผู้สอน</h3>
+                    <p>เปรียบเสมือนการมีเฉลยให้ AI เช่น การสอนว่ารูปไหนคือ "สุนัข" หรือ "แมว" โดยการป้อนป้ายกำกับ
+                        (Label) ข้อมูลที่ถูกต้องลงไป</p>
+                </div>
+                <div class="tech-detail-card" data-aos="fade-up">
+                    <div class="badge">Unsupervised</div>
+                    <h3>การเรียนรู้แบบไม่มีผู้สอน</h3>
+                    <p>AI จะต้องหาความสัมพันธ์ของข้อมูลเอง เช่น การจัดกลุ่มลูกค้าที่มีพฤติกรรมคล้ายกัน (Clustering)
+                        โดยที่เราไม่ต้องบอกล่วงหน้า</p>
+                </div>
+                <div class="tech-detail-card" data-aos="fade-left">
+                    <div class="badge neon-purple">Reinforcement</div>
+                    <h3>การเรียนรู้แบบลองผิดลองถูก</h3>
+                    <p>AI เรียนรู้ผ่าน "รางวัล" และ "บทลงโทษ" เช่น การฝึก AI เล่นเกม หรือฝึกหุ่นยนต์เดินบนพื้นที่ขรุขระ
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="neural-infographic mt-5" data-aos="zoom-in">
+                <div class="row">
+                    <div class="col-half">
+                        <h3>Artificial Neural Networks (ANN)</h3>
+                        <p>คือโครงสร้างที่จำลองมาจากเครือข่ายประสาทในสมองมนุษย์ ประกอบด้วย:</p>
+                        <ul class="fancy-list">
+                            <li><strong>Input Layer:</strong> ส่วนรับข้อมูลดิบ</li>
+                            <li><strong>Hidden Layers:</strong> ชั้นประมวลผลที่มีน้ำหนัก (Weights) แตกต่างกัน</li>
+                            <li><strong>Output Layer:</strong> ส่วนแสดงผลลัพธ์สุดท้าย</li>
+                        </ul>
+                    </div>
+                    <div class="col-half">
+                        <div class="placeholder-img glow-purple"
+                            style="padding: 0; overflow: hidden; border: none; background: transparent;">
+                            <script
+                                src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+                            <lottie-player src="img/animation.json" background="transparent" speed="1"
+                                style="width: 100%; height: 100%;" loop autoplay>
+                            </lottie-player>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="impact" class="section-padding bg-gradient">
+        <div class="container">
+            <div class="row">
+                <div class="col-half" data-aos="fade-right">
+                    <h2>⚠️ จริยธรรมและผลกระทบ</h2>
+                    <p class="lead">เหรียญย่อมมีสองด้าน AI ก็เช่นกัน</p>
+                    <ul class="fancy-list">
+                        <li><strong>Bias & Fairness:</strong> AI อาจเอนเอียงตามข้อมูลที่ใช้สอน</li>
+                        <li><strong>Privacy:</strong> การละเมิดความเป็นส่วนตัวจากระบบจดจำใบหน้า</li>
+                        <li><strong>Job Displacement:</strong> งานบางอย่างอาจถูกแทนที่ด้วยระบบอัตโนมัติ</li>
+                        <li><strong>Deepfakes:</strong> การสร้างสื่อปลอมที่สมจริงจนแยกไม่ออก</li>
+                    </ul>
+                </div>
+                <div class="col-half" data-aos="zoom-in">
+                    <div class="glass-panel">
+                        <h3>แนวทางการปรับตัว</h3>
+                        <p>มนุษย์ต้องเปลี่ยนจาก "ผู้ปฏิบัติ" เป็น "ผู้ควบคุม" และเน้นทักษะที่ AI ทำไม่ได้ เช่น
+                            ความคิดสร้างสรรค์เชิงลึก และความเห็นอกเห็นใจ (Empathy)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="future" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header center-text" data-aos="fade-down">
+                <span class="sub-heading">Next Step</span>
+                <h2>เตรียมพร้อมสู่อนาคต</h2>
+                <p style="color: #a0aabf; margin-top: 10px;">งานในอนาคตไม่ได้หายไป แต่จะเปลี่ยนรูปแบบ</p>
+            </div>
+
+            <div class="cards-wrapper">
+                <div class="info-card" data-aos="flip-up" style="border-top-color: #bc13fe;">
+                    <div class="icon-wrapper" style="color: #bc13fe;"><i class="fas fa-code-branch"></i></div>
+                    <h3>AI Engineer</h3>
+                    <p>ผู้สร้างและพัฒนาระบบ AI, ออกแบบ Model และจัดการข้อมูลขนาดใหญ่ (Big Data)</p>
+                </div>
+
+                <div class="info-card" data-aos="flip-up" data-aos-delay="100" style="border-top-color: #00f2ff;">
+                    <div class="icon-wrapper" style="color: #00f2ff;"><i class="fas fa-comments"></i></div>
+                    <h3>Prompt Engineer</h3>
+                    <p>อาชีพใหม่แห่งยุค! ผู้เชี่ยวชาญด้านการสั่งงาน AI ให้ได้ผลลัพธ์ที่แม่นยำที่สุด</p>
+                </div>
+
+                <div class="info-card" data-aos="flip-up" data-aos-delay="200" style="border-top-color: #ff0055;">
+                    <div class="icon-wrapper" style="color: #ff0055;"><i class="fas fa-balance-scale"></i></div>
+                    <h3>AI Ethicist</h3>
+                    <p>นักจริยธรรม AI ผู้ตรวจสอบความถูกต้อง ป้องกันอคติ และดูแลความปลอดภัยของระบบ</p>
+                </div>
+            </div>
+
+            <div class="tech-detail-card mt-5" data-aos="fade-up"
+                style="text-align:center; background: linear-gradient(90deg, rgba(0,242,255,0.05) 0%, rgba(188,19,254,0.05) 100%);">
+                <h3>💡 ทักษะที่มนุษย์ต้องมีเหนือ AI</h3>
+                <p style="font-size: 1.1rem; margin-top:15px;">
+                    <span style="color:var(--primary); font-weight:bold;">Creativity</span> (ความคิดสร้างสรรค์) •
+                    <span style="color:var(--accent); font-weight:bold;">Empathy</span> (ความเข้าใจผู้อื่น) •
+                    <span style="color:#bc13fe; font-weight:bold;">Critical Thinking</span> (การคิดวิเคราะห์เชิงลึก)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="applications" class="section-padding">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="sub-heading">Use Cases</span>
+                <h2>AI ในภาคอุตสาหกรรม</h2>
+            </div>
+
+            <div class="app-grid">
+                <div class="app-item" data-aos="fade-up">
+                    <div class="app-icon"><i class="fas fa-hospital-user"></i></div>
+                    <h4>การแพทย์ (Healthcare)</h4>
+                    <p>ใช้ AI วินิจฉัยโรคมะเร็งจากภาพเอกซเรย์ที่มีความแม่นยำสูงกว่ารังสีแพทย์ในบางกรณี</p>
+                </div>
+                <div class="app-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="app-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>การเงิน (FinTech)</h4>
+                    <p>ระบบตรวจจับการทุจริตบัตรเครดิต (Fraud Detection) และการซื้อขายหุ้นอัตโนมัติ (Algo-Trading)</p>
+                </div>
+                <div class="app-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="app-icon"><i class="fas fa-seedling"></i></div>
+                    <h4>เกษตรกรรม (AgriTech)</h4>
+                    <p>โดรน AI วิเคราะห์สุขภาพพืชพรรณและปล่อยปุ๋ยเฉพาะจุดที่มีปัญหา ช่วยลดต้นทุน</p>
+                </div>
+                <div class="app-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="app-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>ความมั่นคง (Cybersecurity)</h4>
+                    <p>AI คอยตรวจจับมัลแวร์สายพันธุ์ใหม่ๆ ที่มนุษย์ยังไม่เคยเจอได้แบบ Real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content" data-aos="zoom-in">
+            <h2>พร้อมทดสอบความรู้ของคุณหรือยัง?</h2>
+            <p>วัดระดับความเข้าใจเกี่ยวกับ AI ผ่านแบบทดสอบ 15 ข้อ</p>
+            <div id="ctaScoreDisplay"></div> <a href="testquiz.html" class="btn-neon-lg">เริ่มทำข้อสอบ <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section id="creators" class="section-padding">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="sub-heading">The Team</span>
+                <h2>คณะผู้จัดทำ</h2>
+            </div>
+            <div class="creators-wrapper">
+                <div class="creator-profile" data-aos="fade-up">
+                    <div class="profile-img">
+                        <img src="img/nina.jfif" alt="Project Manager">
+                    </div>
+                    <div class="profile-info">
+                        <h3>ธัญญพร วิเชียรรักษ์</h3>
+                        <p class="role">Project Manager & Developer</p>
+                        <p class="id-code">ID: 66209010004</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/babenanona"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/kawaiicaprimulnano/?__pwa=1"><i
+                                    class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="creator-profile" data-aos="fade-up" data-aos-delay="200">
+                    <div class="profile-img">
+                        <img src="img/ball.jfif" alt="UI Designer">
+                    </div>
+                    <div class="profile-info">
+                        <h3>ณัฐรัชต์ โพะิ์มนต์</h3>
+                        <p class="role">Content Researcher & UX/UI Designer</p>
+                        <p class="id-code">ID: 66209010003</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/balloon_n07/?__pwa=1"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/nattharat.phomon"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>AI NEXUS</h3>
+                <p>แหล่งเรียนรู้ออนไลน์เพื่ออนาคตแห่งเทคโนโลยี ปัญญาประดิษฐ์ไม่ใช่เรื่องไกลตัวอีกต่อไป</p>
+            </div>
+            <div class="footer-col">
+                <h3>เมนูลัด</h3>
+                <ul>
+                    <li><a href="#history">ประวัติ</a></li>
+                    <li><a href="#technology">เทคโนโลยี</a></li>
+                    <li><a href="quiz.html">แบบทดสอบ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>ติดต่อเรา</h3>
+                <p><i class="fas fa-envelope"></i> hhhohfduu456@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 096-071-4658</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/babenanona"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://youtube.com/@deknanino?si=iu0Va3q38Ns9UFXF"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI Nexus Project. Final Project Submission.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <div id="aboutModal" class="modal-backdrop">
+        <div class="modal-window">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>ℹ️ เกี่ยวกับโครงการ</h2>
+            </div>
+            <div class="modal-body">
+                <p>เว็บไซต์นี้เป็นส่วนหนึ่งของรายวิชา <strong>[การพัฒนาเว็บไซต์]</strong></p>
+                <p>มีวัตถุประสงค์เพื่อเผยแพร่ความรู้เกี่ยวกับเทคโนโลยีปัญญาประดิษฐ์ในรูปแบบที่ทันสมัยและเข้าใจง่าย</p>
+                <hr>
+                <h4>เครื่องมือที่ใช้พัฒนา:</h4>
+                <div class="tags">
+                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>AOS Library</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
