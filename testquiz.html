@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทดสอบความรู้ AI | AI NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS เฉพาะหน้า Quiz */
+        .quiz-body { 
+            background: #050a14; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 0; 
+        }
+        .quiz-wrapper { 
+            background: #111827; 
+            width: 90%; 
+            max-width: 800px; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.1); 
+            border: 1px solid #333; 
+        }
+        .quiz-header { 
+            border-bottom: 2px solid var(--primary); 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+            text-align: center; 
+        }
+        .q-item { 
+            margin-bottom: 30px; 
+            padding: 20px; 
+            background: rgba(255,255,255,0.03); 
+            border-radius: 10px; 
+        }
+        .q-question { 
+            font-size: 1.1rem; 
+            margin-bottom: 15px; 
+            font-weight: bold; 
+            color: #fff; 
+        }
+        .q-options label { 
+            display: block; 
+            padding: 10px 15px; 
+            margin: 5px 0; 
+            background: rgba(255,255,255,0.05); 
+            cursor: pointer; 
+            border-radius: 5px; 
+            transition: 0.2s; 
+            color: #ddd;
+        }
+        .q-options label:hover { 
+            background: rgba(0, 242, 255, 0.2); 
+        }
+        .q-options input { 
+            margin-right: 10px; 
+        }
+
+        /* Result Page Styles */
+        .result-page {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .result-page.active {
+            display: block;
+        }
+        .quiz-form.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Success Result */
+        .result-success {
+            color: #00f2ff;
+        }
+        .result-success .score-display {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 30px 0;
+            text-shadow: 0 0 30px rgba(0, 242, 255, 0.8);
+            animation: pulse 2s infinite;
+        }
+        .result-success .trophy {
+            font-size: 8rem;
+            animation: bounce 1s infinite;
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #00f2ff;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes confetti-fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Fail Result */
+        .result-fail {
+            color: #ff6b6b;
+        }
+        .result-fail .score-display {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #ffaa00;
+        }
+        .result-fail .emoji {
+            font-size: 6rem;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .result-message {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .result-detail {
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #aaa;
+        }
+
+        .btn-glow {
+            background: linear-gradient(45deg, #00f2ff, #0080ff);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.8);
+        }
+
+        .back-link {
+            color: #888;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            color: #00f2ff;
+        }
+    </style>
+</head>
+<body class="quiz-body">
+    <div class="quiz-wrapper">
+        <div class="quiz-header">
+            <h1>🎓 Final Assessment</h1>
+            <p>แบบทดสอบวัดระดับความรู้เรื่องปัญญาประดิษฐ์ (15 ข้อ)</p>
+        </div>
+
+        <!-- Quiz Form -->
+        <form id="aiQuiz" class="quiz-form">
+            <div class="q-item">
+                <p class="q-question">1. คำว่า AI ย่อมาจากอะไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q1" value="1"> Artificial Intelligence</label>
+                    <label><input type="radio" name="q1" value="0"> Automated Information</label>
+                    <label><input type="radio" name="q1" value="0"> Advanced Internet</label>
+                    <label><input type="radio" name="q1" value="0"> Auto Interface</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">2. ใครได้รับยกย่องว่าเป็นบิดาแห่งวิทยาการคอมพิวเตอร์และ AI?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q2" value="0"> Steve Jobs</label>
+                    <label><input type="radio" name="q2" value="1"> Alan Turing</label>
+                    <label><input type="radio" name="q2" value="0"> Bill Gates</label>
+                    <label><input type="radio" name="q2" value="0"> Elon Musk</label>
+                </div>
+            </div>
+            
+            <div class="q-item">
+                <p class="q-question">3. AI ประเภทใดที่สามารถทำงานได้เทียบเท่ามนุษย์ในทุกๆ ด้าน?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q3" value="0"> ANI (Narrow AI)</label>
+                    <label><input type="radio" name="q3" value="1"> AGI (General AI)</label>
+                    <label><input type="radio" name="q3" value="0"> IoT</label>
+                    <label><input type="radio" name="q3" value="0"> Cloud Computing</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">4. Deep Blue ของ IBM ชนะแชมป์โลกในเกมอะไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q4" value="1"> หมากรุก</label>
+                    <label><input type="radio" name="q4" value="0"> โกะ</label>
+                    <label><input type="radio" name="q4" value="0"> เชส</label>
+                    <label><input type="radio" name="q4" value="0"> โปกเกอร์</label>
+                </div>
+            </div>
+            
+            <div class="q-item">
+                <p class="q-question">5. เทคโนโลยีใดจำลองการทำงานของสมองมนุษย์?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q5" value="1"> Neural Networks</label>
+                    <label><input type="radio" name="q5" value="0"> Database</label>
+                    <label><input type="radio" name="q5" value="0"> Blockchain</label>
+                    <label><input type="radio" name="q5" value="0"> Cloud Storage</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">6. Machine Learning คืออะไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q6" value="0"> การเรียนรู้ของมนุษย์</label>
+                    <label><input type="radio" name="q6" value="1"> การเรียนรู้ของเครื่องจักรจากข้อมูล</label>
+                    <label><input type="radio" name="q6" value="0"> การสอนคอมพิวเตอร์</label>
+                    <label><input type="radio" name="q6" value="0"> โปรแกรมแปลภาษา</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">7. ChatGPT เป็น AI ประเภทใด?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q7" value="0"> Image Recognition</label>
+                    <label><input type="radio" name="q7" value="1"> Natural Language Processing (NLP)</label>
+                    <label><input type="radio" name="q7" value="0"> Robotics</label>
+                    <label><input type="radio" name="q7" value="0"> Computer Vision</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">8. ข้อใดไม่ใช่การนำ AI ไปใช้ในชีวิตประจำวัน?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q8" value="0"> ผู้ช่วยเสียง (Siri, Alexa)</label>
+                    <label><input type="radio" name="q8" value="0"> แนะนำสินค้าใน E-commerce</label>
+                    <label><input type="radio" name="q8" value="1"> การทำอาหาร</label>
+                    <label><input type="radio" name="q8" value="0"> ระบบนำทาง GPS</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">9. Deep Learning แตกต่างจาก Machine Learning อย่างไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q9" value="0"> ใช้ข้อมูลน้อยกว่า</label>
+                    <label><input type="radio" name="q9" value="1"> ใช้ Neural Network ที่มีหลายชั้น</label>
+                    <label><input type="radio" name="q9" value="0"> ทำงานช้ากว่า</label>
+                    <label><input type="radio" name="q9" value="0"> ไม่ต้องใช้ข้อมูล</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">10. AI สามารถใช้ในด้านการแพทย์ได้อย่างไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q10" value="0"> แทนที่แพทย์ทั้งหมด</label>
+                    <label><input type="radio" name="q10" value="1"> วิเคราะห์ภาพทางการแพทย์และช่วยวินิจฉัยโรค</label>
+                    <label><input type="radio" name="q10" value="0"> ทำงานแทนพยาบาล</label>
+                    <label><input type="radio" name="q10" value="0"> จัดการเอกสารเท่านั้น</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">11. ข้อใดคือข้อจำกัดของ AI ในปัจจุบัน?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q11" value="0"> ทำงานได้เร็วกว่ามนุษย์</label>
+                    <label><input type="radio" name="q11" value="1"> ขาดความคิดสร้างสรรค์และจริยธรรม</label>
+                    <label><input type="radio" name="q11" value="0"> ประมวลผลข้อมูลได้มาก</label>
+                    <label><input type="radio" name="q11" value="0"> ทำงานได้ตลอด 24 ชั่วโมง</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">12. AlphaGo เป็น AI ที่เก่งในเกมใด?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q12" value="1"> โกะ (Go)</label>
+                    <label><input type="radio" name="q12" value="0"> หมากรุก</label>
+                    <label><input type="radio" name="q12" value="0"> โปกเกอร์</label>
+                    <label><input type="radio" name="q12" value="0"> Dota 2</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">13. Supervised Learning คืออะไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q13" value="1"> การเรียนรู้จากข้อมูลที่มีคำตอบ</label>
+                    <label><input type="radio" name="q13" value="0"> การเรียนรู้โดยไม่ต้องมีข้อมูล</label>
+                    <label><input type="radio" name="q13" value="0"> การเรียนรู้จากการลองผิดลองถูก</label>
+                    <label><input type="radio" name="q13" value="0"> การเรียนรู้ภายใต้การดูแล</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">14. Bias ใน AI หมายถึงอะไร?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q14" value="0"> ข้อผิดพลาดของโปรแกรม</label>
+                    <label><input type="radio" name="q14" value="1"> ความลำเอียงในข้อมูลหรือผลลัพธ์</label>
+                    <label><input type="radio" name="q14" value="0"> ความเร็วในการประมวลผล</label>
+                    <label><input type="radio" name="q14" value="0"> ประสิทธิภาพของระบบ</label>
+                </div>
+            </div>
+
+            <div class="q-item">
+                <p class="q-question">15. ข้อใดเป็นจริยธรรมที่ควรคำนึงเมื่อใช้ AI?</p>
+                <div class="q-options">
+                    <label><input type="radio" name="q15" value="0"> ใช้ AI แทนมนุษย์ทั้งหมด</label>
+                    <label><input type="radio" name="q15" value="1"> ความเป็นส่วนตัวและความปลอดภัยของข้อมูล</label>
+                    <label><input type="radio" name="q15" value="0"> ทำกำไรสูงสุด</label>
+                    <label><input type="radio" name="q15" value="0"> ประหยัดค่าใช้จ่าย</label>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" class="btn-glow" onclick="calculateScore()">ส่งคำตอบ</button>
+                <br><br>
+                <a href="index.html" class="back-link">ยกเลิกและกลับหน้าหลัก</a>
+            </div>
+        </form>
+
+        <!-- Success Result Page -->
+        <div id="resultSuccess" class="result-page result-success">
+            <div class="trophy">🏆</div>
+            <h1 class="result-message">ยอดเยี่ยม! คุณสอบผ่าน! 🎉</h1>
+            <div class="score-display" id="successScore">0/15</div>
+            <p class="result-detail">คุณมีความรู้ความเข้าใจเรื่อง AI เป็นอย่างดี!</p>
+            <p class="result-detail">คุณพร้อมแล้วที่จะนำความรู้ไปใช้ในโลกแห่งปัญญาประดิษฐ์ 🚀</p>
+            <button class="btn-glow" onclick="window.location.href='index.html'">กลับหน้าหลัก</button>
+        </div>
+
+        <!-- Fail Result Page -->
+        <div id="resultFail" class="result-page result-fail">
+            <div class="emoji">💪</div>
+            <h1 class="result-message">ไม่เป็นไร ยังมีโอกาสอีกเยอะ!</h1>
+            <div class="score-display" id="failScore">0/15</div>
+            <p class="result-detail">การเรียนรู้เป็นกระบวนการ ความล้มเหลวคือบันไดแห่งความสำเร็จ 🌟</p>
+            <p class="result-detail">ลองศึกษาเนื้อหาเพิ่มเติมแล้วกลับมาทดสอบอีกครั้งนะ!</p>
+            <button class="btn-glow" onclick="retakeQuiz()">ลองใหม่อีกครั้ง</button>
+            <button class="btn-glow" onclick="window.location.href=index.html" style="background: linear-gradient(45deg, #888, #555);">กลับหน้าหลัก</button>
+        </div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let score = 0;
+            const form = document.getElementById('aiQuiz');
+            const formData = new FormData(form);
+            let answered = 0;
+
+            // นับคะแนน (Value=1 คือถูก, 0 คือผิด)
+            for(let value of formData.values()) {
+                score += parseInt(value);
+                answered++;
+            }
+
+            // ตรวจสอบว่าตอบครบ 15 ข้อหรือยัง
+            if(answered < 15) { 
+                alert("กรุณาทำข้อสอบให้ครบทุกข้อก่อนส่งคำตอบครับ");
+                return;
+            }
+
+            // บันทึกคะแนน
+            localStorage.setItem('aiNexusScore', score);
+            
+            // ซ่อนฟอร์ม
+            document.querySelector('.quiz-form').classList.add('hidden');
+
+            // แสดงผลตามคะแนน
+            if(score >= 8) {
+                // ผ่าน: ได้ 8 คะแนนขึ้นไป
+                document.getElementById('successScore').textContent = score + '/15';
+                document.getElementById('resultSuccess').classList.add('active');
+                createConfetti();
+            } else {
+                // ไม่ผ่าน: ได้น้อยกว่า 8 คะแนน
+                document.getElementById('failScore').textContent = score + '/15';
+                document.getElementById('resultFail').classList.add('active');
+            }
+
+            // เลื่อนขึ้นบนสุด
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function createConfetti() {
+            const colors = ['#00f2ff', '#0080ff', '#00ffaa', '#ffaa00', '#ff00ff'];
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.animation = `confetti-fall ${2 + Math.random() * 2}s linear`;
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+        }
+
+        function retakeQuiz() {
+            // รีเซ็ตฟอร์ม
+            document.getElementById('aiQuiz').reset();
+            
+            // ซ่อนหน้าผลลัพธ์
+            document.getElementById('resultSuccess').classList.remove('active');
+            document.getElementById('resultFail').classList.remove('active');
+            
+            // แสดงฟอร์มอีกครั้ง
+            document.querySelector('.quiz-form').classList.remove('hidden');
+            
+            // เลื่อนขึ้นบนสุด
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
